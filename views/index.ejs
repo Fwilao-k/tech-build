@@ -30,6 +30,7 @@
       <button class="nav-link">Join</button>
       <span class="divider">|</span>
       <button class="nav-link">Log in</button>
+
     </div>
   </header>
 
@@ -49,7 +50,7 @@
       <p class="hero-subtitle">
         Discover learning paths, real-world projects and guidance built for students who want to grow in technology.
       </p>
-    </div>
+
   </main>
 
   <!-- SEARCH BAR -->
@@ -93,12 +94,7 @@
     <% }) %>
   </section>
 
-  <!-- LOADER OVERLAY -->
-  <div id="page-loader" class="loader-overlay">
-    <div class="spinner"></div>
-  </div>
-
-  <!-- JS for filtering, scroll & loader -->
+  <!-- JS for filtering & scroll -->
   <script>
     function search() {
       const role = document.getElementById("roleSelect").value;
@@ -126,12 +122,12 @@
                 <small>${item.role} • ${item.level}</small>
               </div>
             `;
+
             section.appendChild(card);
 
             // sliding animation delay
             setTimeout(() => {
-              card.querySelector(".result-card").style.animation =
-                "slideUp .4s ease forwards";
+              card.querySelector(".result-card").style.animation = `slideUp .4s ease forwards`;
             }, index * 120);
           });
         });
@@ -141,25 +137,14 @@
       const section = document.getElementById("results-section");
       if (section) {
         section.scrollIntoView({ behavior: "smooth" });
-        document.activeElement.blur();
+
+        // Remove focus from button immediately
+        const btn = document.querySelector(".primary-btn");
+        btn.blur();
       }
     }
-
-    // Show loader on navigation clicks (links that go to another route)
-    document.addEventListener("click", function (e) {
-      const link = e.target.closest('a[href^="/"]');
-      if (!link) return;
-
-      // allow middle click / ctrl+click for new tab
-      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-
-      const loader = document.getElementById("page-loader");
-      if (loader) {
-        loader.style.display = "flex";
-      }
-    });
   </script>
-
+  
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-top">
@@ -187,4 +172,4 @@
     </div>
   </footer>
 </body>
-</html>
+</html>  you just make the changes in this and give me the full code

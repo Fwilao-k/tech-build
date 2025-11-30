@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tech Build</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="/" class="logo-link">
+        <div class="logo">
+          <span class="logo-box">tech</span>
+          <span class="logo-text">build</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="/paths" class="nav-item">Paths ▾</a>
+        <a href="/resources" class="nav-item">Resources</a>
+        <a href="/projects" class="nav-item">Projects</a>
+        <a href="/roadmaps" class="nav-item">Roadmaps</a>
+        <a href="/salaries" class="nav-item">Salaries</a>
+        <a href="/learn" class="nav-item">Learn</a>
+      </nav>
+    </div>
+
+    <div class="nav-right">
+      <button class="nav-link">Join</button>
+      <span class="divider">|</span>
+      <button class="nav-link">Log in</button>
+
+    </div>
+  </header>
+
+  <!-- SUB NAV -->
+  <section class="subnav">
+    <div class="tagline">Connecting Students with Tech Opportunities</div>
+    <a href="/track" class="subnav-link">Find My Tech Track</a>
+  </section>
+
+  <!-- HERO SECTION -->
+  <main class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Tech skills, guides + communities</p>
+      <h1 class="hero-title">
+        Explore tech. <span class="accent-dot">Unlock</span> new opportunities.
+      </h1>
+      <p class="hero-subtitle">
+        Discover learning paths, real-world projects and guidance built for students who want to grow in technology.
+      </p>
+
+  </main>
+
+  <!-- SEARCH BAR -->
+  <section class="search-bar">
+    <div class="search-text">Find the path you really want.</div>
+
+    <div class="search-select">
+      <span class="label">Role</span>
+      <select id="roleSelect" onchange="search()">
+        <option>All</option>
+        <option>Developer</option>
+        <option>Designer</option>
+        <option>Data</option>
+        <option>Cyber</option>
+      </select>
+    </div>
+
+    <div class="search-select">
+      <span class="label">Experience</span>
+      <select id="levelSelect" onchange="search()">
+        <option>All</option>
+        <option>Beginner</option>
+        <option>Intermediate</option>
+        <option>Advanced</option>
+      </select>
+    </div>
+
+    <button class="primary-btn" onclick="scrollToResults()">Explore Paths</button>
+  </section>
+
+  <!-- RESULTS SECTION -->
+  <section id="results-section" class="results">
+    <% paths.forEach(p => { %>
+      <a class="result-card-link" href="/path/<%= p.id %>">
+        <div class="result-card">
+          <h3><%= p.title %></h3>
+          <p><%= p.description %></p>
+          <small><%= p.role %> • <%= p.level %></small>
+        </div>
+      </a>
+    <% }) %>
+  </section>
+
+  <!-- JS for filtering & scroll -->
+  <script>
+    function search() {
+      const role = document.getElementById("roleSelect").value;
+      const level = document.getElementById("levelSelect").value;
+
+      fetch(`/search?role=${role}&level=${level}`)
+        .then(res => res.json())
+        .then(data => {
+          const section = document.getElementById("results-section");
+          section.innerHTML = "";
+
+          if (data.length === 0) {
+            section.innerHTML = `<p>No paths found.</p>`;
+            return;
+          }
+
+          data.forEach((item, index) => {
+            const card = document.createElement("a");
+            card.className = "result-card-link";
+            card.href = `/path/${item.id}`;
+            card.innerHTML = `
+              <div class="result-card">
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+                <small>${item.role} • ${item.level}</small>
+              </div>
+            `;
+
+            section.appendChild(card);
+
+            // sliding animation delay
+            setTimeout(() => {
+              card.querySelector(".result-card").style.animation = `slideUp .4s ease forwards`;
+            }, index * 120);
+          });
+        });
+    }
+
+    function scrollToResults() {
+      const section = document.getElementById("results-section");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+
+        // Remove focus from button immediately
+        const btn = document.querySelector(".primary-btn");
+        btn.blur();
+      }
+    }
+  </script>
+  
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <span class="logo-box">tech</span>
+        <span class="logo-text">build</span>
+      </div>
+
+      <p class="footer-tagline">
+        Empowering students to discover and grow in technology.
+      </p>
+
+      <div class="footer-links">
+        <a href="/paths">Paths</a>
+        <a href="/resources">Resources</a>
+        <a href="/projects">Projects</a>
+        <a href="/roadmaps">Roadmaps</a>
+        <a href="/salaries">Salaries</a>
+        <a href="/learn">Learn</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Tech Build. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

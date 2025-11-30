@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <!-- Same navbar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="/" class="logo-link">
+        <div class="logo">
+          <span class="logo-box">tech</span>
+          <span class="logo-text">build</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="/paths" class="nav-item">Paths ▾</a>
+        <a href="/resources" class="nav-item">Resources</a>
+        <a href="/projects" class="nav-item">Projects</a>
+        <a href="/roadmaps" class="nav-item">Roadmaps</a>
+        <a href="/salaries" class="nav-item">Salaries</a>
+        <a href="/learn" class="nav-item">Learn</a>
+      </nav>
+    </div>
+
+    <div class="nav-right">
+      <button class="nav-btn secondary">For Mentors</button>
+      <button class="nav-link">Join</button>
+      <button class="nav-link">Log in</button>
+    </div>
+  </header>
+
+  <section class="page">
+    <h1 class="page-title"><%= heading %></h1>
+    <p class="page-description"><%= description %></p>
+    <a href="/" class="page-link">← Back to Home</a>
+  </section>
+</body>
+</html>

@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "title": "Frontend Developer",
+    "role": "Developer",
+    "level": "Beginner",
+    "description": "Learn HTML, CSS, JavaScript and start building websites."
+  },
+  {
+    "id": 2,
+    "title": "Backend Developer",
+    "role": "Developer",
+    "level": "Intermediate",
+    "description": "APIs, Databases, Node.js and server-side logic."
+  },
+  {
+    "id": 3,
+    "title": "UI/UX Designer",
+    "role": "Designer",
+    "level": "Beginner",
+    "description": "Create beautiful user experiences using design tools."
+  },
+  {
+    "id": 4,
+    "title": "Data Scientist",
+    "role": "Data",
+    "level": "Advanced",
+    "description": "Machine learning, Python, big data analysis."
+  },
+  {
+    "id": 5,
+    "title": "Cyber Security Analyst",
+    "role": "Cyber",
+    "level": "Intermediate",
+    "description": "Security monitoring, penetration testing, system protection."
+  }
+]

@@ -18,6 +18,13 @@ app.get("/", (req, res) => {
   res.render("index", { paths: pathsData });
 });
 
+app.get("/resources", (req, res) => res.render("resources"));
+app.get("/projects", (req, res) => res.render("projects"));
+app.get("/roadmaps", (req, res) => res.render("roadmaps"));
+app.get("/salaries", (req, res) => res.render("salaries"));
+app.get("/learn", (req, res) => res.render("learn"));
+
+
 // SEARCH API (for filters on home page)
 app.get("/search", (req, res) => {
   const role = req.query.role;

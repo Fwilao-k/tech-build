@@ -1,0 +1,39 @@
+<header class="navbar">
+  <div class="nav-left">
+    <a href="/" class="logo-link">
+      <div class="logo">
+        <span class="logo-box">tech</span>
+        <span class="logo-text">build</span>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="/paths" class="nav-item">Paths</a>
+      <a href="/resources" class="nav-item">Resources</a>
+      <a href="/projects" class="nav-item">Projects</a>
+      <a href="/roadmaps" class="nav-item">Roadmaps</a>
+      <a href="/salaries" class="nav-item">Salaries</a>
+      <a href="/learn" class="nav-item">Learn</a>
+    </nav>
+  </div>
+
+  <div class="nav-right">
+    <div id="profileMenu" class="profile-menu hidden">
+      <div class="profile-icon">
+        <span id="profileLetter"></span>
+        <span class="online-dot"></span>
+      </div>
+      <div class="dropdown hidden" id="dropdownMenu">
+        <p id="dropdownEmail"></p>
+        <hr />
+        <button class="dropdown-item">Account</button>
+        <button class="dropdown-item">Settings</button>
+        <button id="logoutBtn" class="dropdown-item logout">Logout</button>
+      </div>
+    </div>
+
+    <button id="joinBtn" class="nav-link">Join</button>
+    <button id="loginBtn" class="nav-link">Log In</button>
+  </div>
+</header>
+<script type="module" src="/js/auth.js"></script>
